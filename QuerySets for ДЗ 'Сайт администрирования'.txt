@@ -1,0 +1,32 @@
+Задание по теме "QuerySet запросы в базу данных":
+=================================================
+from toy_department.models import Buyer, Toy
+
+Buyer.objects.create(name='Лиза', balance=500, age=25)
+Buyer.objects.create(name='Коля', balance=700, age=24)
+Buyer.objects.create(name='Миша', balance=250, age=5)
+
+Toy.objects.create(title='Кукла Игнат', articul='001501647', cost=2000, weight=350, description='Забавная кукла', age_limited=False, in_stock=5, picture_min='Ignatiy.png', picture_max='Ignatiy.gif')
+Toy.objects.create(title='Медвежонок Тэдди', articul='305641958', cost=950, weight=500, description='Очень мимимишка!', age_limited=False, in_stock=3, picture_min='teddy_bear.png', picture_max='teddy_bear.gif')
+Toy.objects.create(title='Наглый кот', articul='812128311', cost=1050, weight=250, description='Мышей не ловит. Только ест, спит и со стола ворует.', age_limited=False, in_stock=5, picture_min='Cat.png', picture_max='Cat.gif')
+Toy.objects.create(title='Заяц Пафнутий', articul='911135603', cost=2100, weight=475, description='Ну, заяц... Уши есть. Хвост тоже. Но...', age_limited=True, in_stock=2, picture_min='Pafnutiy.png', picture_max='Pafnutiy.gif')
+
+Buyer.objects.get(id=1).toys.set(([x for x in [1, 2, 3, 4] if (Buyer.objects.get(id=1).age > 18 or Toy.objects.get(id=x).age_limited != True)]))
+Buyer.objects.get(id=2).toys.set(([x for x in [1, 4] if (Buyer.objects.get(id=2).age > 18 or Toy.objects.get(id=x).age_limited != True)]))
+Buyer.objects.get(id=3).toys.set(([x for x in [1, 2, 3, 4] if (Buyer.objects.get(id=3).age > 18 or Toy.objects.get(id=x).age_limited != True)]))
+
+Задание по теме "Сайт администрирования":
+=========================================
+Заполнение таблиц:
+
+INSERT INTO toy_department_basket (buyer_id, toy_id, toy_name,toy_descr)  VALUES (2, 1, 'Кукла Игнат','Забавная кукла');
+INSERT INTO toy_department_basket (buyer_id, toy_id, toy_name,toy_descr)  VALUES (2, 3, (SELECT title FROM toy_department_toy WHERE id=3),(SELECT description FROM toy_department_toy WHERE id=3));
+
+Создание объектов и изменение их значений средствами DJANGO:
+
+>>> from toy_department.models import Buyer, Toy, Basket
+>>> Toy.objects.create(title='Поросенок-1', articul='754121001', cost=1500, weight=310, description='Он поросенок и зовут его Ниф-ниф.', age_limited=False, in_stock=4, picture_min='piglet-1.png', picture_max='piglet-1.gif')
+>>> a=Toy.objects.get(title='Поросенок-1')
+>>> a.picture_min='/static/piglet-1.png'
+>>> a.picture_max='http://127.0.0.1:8000/piglet_1/'
+>>> a.save()
