@@ -1,0 +1,22 @@
+body {
+background-color: #fcf8e9;
+}
+h1 {
+text-align: center;
+color: red;
+}
+
+.center {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  width: 50%;
+}
+.btn {
+    width: 20em; /* Ширина кнопки */
+    height: 5em; /* Высота кнопки */
+}
+.btn2 {
+width: 8em; /* Ширина кнопки */
+height: 3em; /* Высота кнопки */
+}
