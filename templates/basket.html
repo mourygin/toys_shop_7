@@ -1,0 +1,44 @@
+{% extends 'struct.html' %}
+{% load static %}
+
+{% block pagename %}
+	{% if toys.count %}
+		<h1>{{ current_user_name }}! Прекрасный выбор!</h1>
+	{% else %}
+		<h1>К сожалению Ваша корзина пуста....</h1>
+	{% endif %}
+{% endblock %}
+{% block menu %}
+{{ block.super }}
+{% endblock %}
+{% block main %}
+	{% if toys.count %}
+		<table border="0" align="center" width="1002">
+			<tr align="center">
+				<td><img src="{% static 'full_basket.png' %}" width="559" height="550" /></td>
+			</tr>
+		</table>
+	{% else %}
+		<table border="0" align="center" width="1002">
+			<tr align="center">
+				<td><img src="{% static 'Empty_basket+.png' %}" width="559" height="600" /></td>
+			</tr>
+		</table>
+	{% endif %}
+<!-- Таблица покупок-->
+{% if toys.count %}
+	<h2 align="center">Ваши покупки:</h2>
+	<table border="1" align="center" width="1002">
+	{% for toy in toys %}
+		<tr>
+			<td>{{ toy.toy_name }}</td>
+			<td>{{ toy.toy_descr }}</td>
+		</tr>
+
+	{% endfor %}
+	</table>
+{% endif %}
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+{% endblock %}

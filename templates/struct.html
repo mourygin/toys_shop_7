@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel = 'stylesheet' href = '{% static "style.css" %}'>
+</head>
+<body>
+	<pagename>
+		{% block pagename %}
+		<h1>{{ pn }}</h1>
+		{% endblock %}
+	</pagename>
+	<menu>
+		{% block menu %}
+		{% include 'menu.html' %}
+        {% endblock %}
+	</menu>
+	<content>
+		{% block main %}
+		<h1>this is a CONTENT</h1>
+		{% endblock %}
+	</content>
+	<footer>
+		{% block footer %}
+		<hr>
+		<p align="center">This website was developed in 2024 as a learning task at the <a href="https://urban-university.ru/"> Urban University</a>. </p>
+		{% endblock %}
+	</footer>
+</body>
+</html>

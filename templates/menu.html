@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = 'stylesheet' href = '{% static "style.css" %}'>
+</head>
+    <table border="0" align="center" width="1004">
+        <tr>
+          <td width="251"><form action="http://127.0.0.1:8000/"><button {% if pn == 'Добро пожаловать в наш игрушечный магазин игрушек!' %} disabled {% endif %} class="btn"><img src="{% static 'Home.png' %}" width="40" height="35" align="left"><h2>HOME</h2></button></form></td>
+          <td width="251"><form action="http://127.0.0.1:8000/toys/"><button {% if pn == 'Выбери игрушку по своему вкусу!' %} disabled {% endif %} class="btn"><img src="{% static 'Toys.png' %}" width="40" height="40" align="left"><h2>TOYS</h2></button></form></td>
+          <td width="251"><form action="http://127.0.0.1:8000/basket/"><button {% if pn == 'Корзина' %} disabled {% endif %} class="btn"><img src="{% static 'Basket.png' %}" width="40" height="45" align="left"><h2>BASKET</h2></button></form></td>
+          {% if current_user == 0 or current_user == None %}
+            <td width="251"><form action="http://127.0.0.1:8000/login/"><button {% if pn == 'Мы рады Вас видеть!' %} disabled {% endif %} class="btn"><img src="{% static 'key.png' %}" width="53" height="40" align="left"><h2>LOGIN</h2></button></form></td>
+          {% endif %}
+          {% if current_user != 0 and current_user != None %}
+            <td width="251"><form action="http://127.0.0.1:8000/logout/"><button {% if pn == 'Мы рады Вас видеть!' %} disabled {% endif %} class="btn"><img src="{% static 'key.png' %}" width="53" height="40" align="left"><h2>LOGOUT</h2></button></form></td>
+          {% endif %}
+        </tr>
+    </table>

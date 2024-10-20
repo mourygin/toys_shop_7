@@ -1,0 +1,66 @@
+{% extends 'struct.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel = 'stylesheet' href = '{% static "style.css" %}'>
+    <title>Login</title>
+</head>
+<body>
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    <table border="0" align="center" width="1002">
+        <tr>
+            <td align="center">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" maxlength="30" required>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <label for="password">Password :</label>
+                <input type="password" id="password" name="password" required>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td align="center">
+                <button class="btn2" type="submit">Login</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+<br>
+    <table border="0" align="center" width="1002">
+        <tr><td align="center">
+        <form action="http://127.0.0.1:8000/registration/"><button class="btn2">Registretion</button></form></p></td></tr>
+        </td></tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
+</body>
+</html>

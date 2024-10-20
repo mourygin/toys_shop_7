@@ -1,0 +1,30 @@
+{% extends 'struct.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+	<link rel = 'stylesheet' href = '{% static "style.css" %}'>
+</head>
+{% block pagename %}
+	{{ block.super }}
+{% endblock %}
+{% block menu %}
+<!--{% include 'menu.html' %}-->
+{{ block.super }}
+{% endblock %}
+{% block main %}
+	<table border="0" align="center" width="1002">
+		<tr align="center">
+			<td><img src="{% static 'All_toys+.png' %}"/></td>
+		</tr>
+        <tr>
+			<td>
+				<p text=3a290d>Все наши игрушки изготовлены с помощью высокоуровнего языка программирования Python. Все они имеют соответструющие атрибуты и методы. Рекомендуется при использовании применять синтаксис языка. Например - kitten.say_meow(), teddy_bear.go_to_sleep(), ball.roll_down()...</p>
+				<p>Во избежании потери гарантии старайтесь, по возможности, не применять к игрушкам функцию destroy().</p>
+			</td>
+		</tr>
+	</table>
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+{% endblock %}
+

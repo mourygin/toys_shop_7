@@ -1,0 +1,65 @@
+{% extends 'struct.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel = 'stylesheet' href = '{% static "style.css" %}'>
+    <title>Отдел игрушек</title>
+</head>
+{% block pagename %}
+<h1>{{ current_user_name }}{% if current_user != 0 %}!{% endif %} {{ pn }}</h1>
+{% endblock %}
+{% block menu %}
+{{ block.super }}
+{% endblock %}
+{% block main %}
+<table border="1" align="center" width="1002">
+        <tr>
+            <th>
+                <p>Артикул</p>
+            </th>
+            <th>
+                <p>Наименование</p>
+            </th>
+            <th>
+                <p>Цена</p>
+            </th>
+            <th>
+                <p>Вид</p>
+            </th>
+            <th>
+                <p>Действия</p>
+            </th>
+
+        </tr>
+        {% for toy in Toys %}
+        <tr>
+            <td>
+                <p align="center">{{ toy.articul }}</p>
+            </td>
+            <td>
+                <p align="center">{{ toy.title }}<br>({{ toy.description }})</p>
+            </td>
+            <td>
+                <p align="center">{{ toy.cost }}</p>
+            </td>
+            <td>
+                <p align="center"><img src = {{ toy.picture_min }}  width="100" height="100"/></p>
+            </td>
+            <td align="center">
+                <form action="{{ toy.picture_max }}" target="_blank">
+                   <button class="btn2"><p>Посмотреть</p></button>
+                </form>
+                {% if current_user != 0 %}
+                    <br>
+                    <form method="post" action="http://127.0.0.1:8000/buy/">
+                    {% csrf_token %}
+                    <input type="hidden" name="toy_id" value="{{ toy.id }}">
+                    <button class="btn2" type="submit"><p>Купить</p></button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+</html>
